@@ -13,7 +13,7 @@ Pull data from Customer Count & Net Growth Sheet > Transform data using formulas
 
 # Tools and Skills
 <ul>
-  <li>Google Sheet/li>
+  <li>Google Sheet</li>
   <li>Data Visualization</li>
 </ul>
 
