@@ -53,6 +53,6 @@ Disclaimer: Sensitive data has been blurred to protect the company’s confident
   <li>Standardized termination and retention tracking</li>
   <li>Replaced inconsistent spreadsheets with reliable metrics</li>
   <li>Enabled accurate churn measurement and trend analysis</li>
-  <li>Improved visibility into retention drivers and risks/li>
+  <li>Improved visibility into retention drivers and risks</li>
   <li>Supported data-driven decisions to reduce churn and sustain revenue growth</li>
 </ul>
