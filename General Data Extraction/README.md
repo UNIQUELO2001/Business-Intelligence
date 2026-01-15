@@ -17,3 +17,5 @@ Data Source (GorillaDesk) > Data Ingestion (Google Colab) > Data Storage and Cle
   <li>Store and clean data with BigQuery</li>
   <li>Preview the cleaned data to Google Sheets</li>
 </ol>
+
+# Architecture Overview
