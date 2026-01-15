@@ -13,7 +13,7 @@ Datas are pulled from sales, cancellations, missed calls, production, and utiliz
 
 # Tools and Skills
 <ul>
-  <li>Google Sheets/li>
+  <li>Google Sheets</li>
   <li>Business Insights</li>
   <li>Data Analysis</li>
 </ul>
@@ -60,6 +60,6 @@ Disclaimer: Sensitive data has been blurred to protect the company’s confident
   <li>Clear visibility into company performance and trends</li>
   <li>Alignment across teams around shared, measurable goals</li>
   <li>Faster and more confident decision-making</li>
-  <li>Improved accountability and ownership of outcomes/li>
+  <li>Improved accountability and ownership of outcomes</li>
   <li>Stronger ability to track growth, retention, and operational efficiency</li>
 </ul>
