@@ -18,7 +18,7 @@ Data Source (BigQuery) > Data Connector (Google Sheets) > Formulas Google Sheets
 
 # Tools and Skills
 <ul>
-  <li>Data analysis/li>
+  <li>Data analysis</li>
   <li>KPI design</li>
   <li>BigQuery SQL</li>
   <li>Reporting automation</li>
