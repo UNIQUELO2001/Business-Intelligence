@@ -1,4 +1,4 @@
-# Business Intelligence
+# Business Intelligence & Data Analysis
 This repo contains the projects related to business intelligence
 
 # Components Include
