@@ -124,3 +124,5 @@ SAFE_DIVIDE(SUM(productive_hours), SUM(available_hours))
   <li>Early identification of sales decline and operational inefficiencies</li>
   <li>Created a centralized single source of truth for business reporting</li>
 </ul>
+
+> **Disclaimer:** The data presented in this demonstration uses dummy/sample data for confidentiality and company data protection purposes. Only the reporting structure, dashboard framework, calculations, and analytical design are showcased. No actual company data, financial figures, customer information, or operational records are displayed.
