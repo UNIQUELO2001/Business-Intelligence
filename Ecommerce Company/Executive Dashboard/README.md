@@ -14,115 +14,98 @@ Data are extracted from POS systems, ERP databases, inventory management systems
 
 # Tools and Skills
 <ul>
-  <li>Power BI</li>
+  <li>Google BigQuery</li>
+  <li>Google Looker Studio</li>
   <li>SQL</li>
-  <li>Excel Power Query</li>
-  <li>DAX</li>
-  <li>Power Pivot</li>
+  <li>Google Sheets</li>
+  <li>Data Cleaning</li>
   <li>Data Modeling</li>
   <li>ETL Development</li>
+  <li>KPI Development</li>
   <li>Dashboard Design</li>
   <li>Business Analysis</li>
   <li>Data Visualization</li>
 </ul>
 
-# Workflow
-Disclaimer: Sensitive company data and confidential business information have been blurred or excluded to protect company confidentiality.
+# Data Pipeline
+Data are extracted from operational sources such as sales records, customer activity, production reports, utilization sheets, cancellations, and missed calls > Data is processed and transformed in Google BigQuery using SQL queries > Cleaned and modeled tables are connected to Google Looker Studio > Executive KPIs and visual reports are built in Looker Studio for centralized performance monitoring
 
 # 1) SQL Queries Used
 
-## Revenue Aggregation Query
+## Revenue Summary Query
 ```sql
 SELECT
-    branch_name,
-    DATE(transaction_date) AS sales_date,
-    SUM(quantity * unit_price) AS total_revenue
-FROM sales_transactions
-WHERE transaction_date BETWEEN '2025-01-01' AND '2025-12-31'
-GROUP BY branch_name, DATE(transaction_date)
+  DATE(transaction_date) AS sales_date,
+  branch,
+  SUM(total_amount) AS total_revenue,
+  COUNT(DISTINCT transaction_id) AS total_transactions
+FROM `project_id.dataset.sales_table`
+GROUP BY sales_date, branch
 ORDER BY sales_date ASC;
 ```
 
 ## Branch Performance Query
 ```sql
 SELECT
-    branch_name,
-    COUNT(transaction_id) AS total_transactions,
-    SUM(total_amount) AS revenue,
-    AVG(total_amount) AS average_transaction_value
-FROM sales_transactions
-GROUP BY branch_name
+  branch,
+  SUM(total_amount) AS revenue,
+  COUNT(DISTINCT transaction_id) AS total_transactions,
+  AVG(total_amount) AS average_transaction_value
+FROM `project_id.dataset.sales_table`
+GROUP BY branch
 ORDER BY revenue DESC;
 ```
 
-## Inventory Movement Query
+## KPI Overview Query
 ```sql
 SELECT
-    product_name,
-    SUM(stock_in) AS total_stock_in,
-    SUM(stock_out) AS total_stock_out,
-    SUM(current_stock) AS remaining_inventory
-FROM inventory_records
-GROUP BY product_name;
+  report_date,
+  SUM(sales) AS total_sales,
+  SUM(cancellations) AS total_cancellations,
+  SUM(missed_calls) AS total_missed_calls,
+  SUM(production_count) AS total_production,
+  AVG(utilization_rate) AS average_utilization_rate
+FROM `project_id.dataset.executive_kpi_table`
+GROUP BY report_date
+ORDER BY report_date ASC;
 ```
 
-## Employee Productivity Query
+## Utilization Query
 ```sql
 SELECT
-    employee_name,
-    branch_name,
-    COUNT(transaction_id) AS transactions_processed,
-    SUM(total_amount) AS total_sales
-FROM sales_transactions
-GROUP BY employee_name, branch_name
-ORDER BY total_sales DESC;
+  report_date,
+  team,
+  SAFE_DIVIDE(SUM(productive_hours), SUM(available_hours)) AS utilization_rate
+FROM `project_id.dataset.utilization_table`
+GROUP BY report_date, team
+ORDER BY report_date ASC;
 ```
 
 # 2) Formulas used
 
 ## Revenue
-```DAX
-Revenue =
-SUMX(
-    Sales,
-    Sales[Quantity] * Sales[Unit Price]
-)
-```
-
-## Gross Profit Margin
-```DAX
-Gross Profit Margin =
-DIVIDE(
-    [Revenue] - [COGS],
-    [Revenue]
-) * 100
-```
-
-## Sales Growth Rate
-```DAX
-Sales Growth Rate =
-DIVIDE(
-    [Current Period Sales] - [Previous Period Sales],
-    [Previous Period Sales]
-) * 100
-```
-
-## Inventory Turnover
-```DAX
-Inventory Turnover =
-DIVIDE(
-    [COGS],
-    [Average Inventory]
-)
+```sql
+SUM(total_amount)
 ```
 
 ## Average Transaction Value
-```DAX
-Average Transaction Value =
-DIVIDE(
-    [Total Revenue],
-    [Number of Transactions]
-)
+```sql
+SAFE_DIVIDE(SUM(total_amount), COUNT(DISTINCT transaction_id))
+```
+
+## Cancellation Rate
+```sql
+SAFE_DIVIDE(SUM(cancellations), SUM(total_sales))
+```
+
+## Missed Call Rate
+```sql
+SAFE_DIVIDE(SUM(missed_calls), SUM(total_calls))
+```
+
+## Utilization Rate
+```sql
+SAFE_DIVIDE(SUM(productive_hours), SUM(available_hours))
 ```
 
 # 3) Final Product
