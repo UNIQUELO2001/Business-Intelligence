@@ -110,7 +110,8 @@ SAFE_DIVIDE(SUM(productive_hours), SUM(available_hours))
 
 # 3) Final Product
 
-<img width="1910" height="904" alt="Executive Dashboard" src="https://github.com/user-attachments/assets/sample-dashboard-overview.png" />
+<img width="600" height="762" alt="{5235F2FF-C86A-4706-9138-5D3328C64CF0}" src="https://github.com/user-attachments/assets/31ca9767-5563-4afe-b949-2b271105999c" />
+<img width="599" height="869" alt="{B2B54D61-6D18-4243-8C78-14B6E08275B2}" src="https://github.com/user-attachments/assets/2edff5de-313e-48b3-9de1-d06e3d48c638" />
 
 # Results and Impact
 <ul>
